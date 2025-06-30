@@ -1,0 +1,20 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #0f172a, #1e3a8a, #3b82f6);
+  color: white;
+  
+}
+
+
+html{
+  scroll-behavior: smooth;
+}
+/* .hero {
+  min-height: 6vh;
+  background: linear-gradient(to bottom right, #0f172a, #1e3a8a, #3b82f6);
+  color: white;
+} */
