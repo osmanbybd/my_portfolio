@@ -24,14 +24,25 @@ const client = new MongoClient(uri, {
   }
 });
 
+
+function verifyApiKey(req, res, next) {
+  const userKey = req.headers['authorization'];
+  if (userKey === process.env.PROJECT_API_KEY) {
+    next();
+  } else {
+    res.status(403).send({ message: 'Invalid API Key' });
+  }
+}
+
+
 async function run() {
   try {
     // Connect the client to the server	(optional starting in v4.7)
     const projectsCollection = await client.db('projectsDB').collection('projects')
 
+    
 
-
-    app.post('/projects', async(req , res) =>{
+    app.post('/projects', verifyApiKey, async(req , res) =>{
         const query = req.body;
         const result = await projectsCollection.insertOne(query);
         res.send(result)
@@ -40,13 +51,13 @@ async function run() {
 
 
 
-    app.get('/projects' , async(req, res) =>{
+    app.get('/projects', verifyApiKey,  async(req, res) =>{
         const result = await projectsCollection.find().toArray();
         res.send(result)
     })
 
 
-    app.get('/projects/:id', async(req, res) =>{
+    app.get('/projects/:id',  verifyApiKey,  async(req, res) =>{
       const id = req.params.id;
       const projectId = {_id : new ObjectId(id)}
       const result = await projectsCollection.findOne(projectId);
