@@ -70,8 +70,8 @@ const Navbar = () => {
           {/* Resume button */}
           <div>
             <a
-              href="/resume.pdf"
-              download
+              href="/osman_goni.pdf"
+              download='osman_goni.pdf'
               className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg transition duration-300 font-semibold shadow"
             >
               Resume

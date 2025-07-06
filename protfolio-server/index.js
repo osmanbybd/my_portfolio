@@ -58,7 +58,7 @@ async function run() {
     })
 
 
-    app.get('/projects/:id',  verifyApiKey,  async(req, res) =>{
+    app.get('/projects/:id',  async(req, res) =>{
       const id = req.params.id;
       const projectId = {_id : new ObjectId(id)}
       const result = await projectsCollection.findOne(projectId);
