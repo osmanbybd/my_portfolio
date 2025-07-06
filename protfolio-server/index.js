@@ -39,6 +39,7 @@ async function run() {
   try {
     // Connect the client to the server	(optional starting in v4.7)
     const projectsCollection = await client.db('projectsDB').collection('projects')
+    const contactCollection = await client.db('projectsDB').collection('contacts')
 
     
 
@@ -64,6 +65,16 @@ async function run() {
       res.send(result);
     })
 
+    app.get('/contact', async(req, res) =>{
+      const result = await contactCollection.find().toArray()
+      res.send(result)
+    })
+
+    app.post('/contact', async(req , res) =>{
+      const query = req.body;
+      const result = await contactCollection.insertOne(query);
+      res.send(result)
+    })
 
 
     await client.connect();

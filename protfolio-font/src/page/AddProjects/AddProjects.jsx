@@ -25,7 +25,7 @@ const AddProject = () => {
     const techArray = project.technologies.split(",").map((t) => t.trim());
 
     await axios
-      .post("http://localhost:5000/projects", {
+      .post("https://protfolio-server-amber.vercel.app/projects", {
         ...project,
         technologies: techArray,
       })

@@ -3,6 +3,7 @@ import MainLayout from "../layout/MainLayout";
 import Home from "../page/home/Home";
 import AddProjects from "../page/AddProjects/AddProjects";
 import ProjectDetails from "../page/AllProject/ProjectDetails";
+import ContactMessagesDashboard from "../page/ContactMessagesDashboard/ContactMessagesDashboard";
 
 
 
@@ -22,7 +23,12 @@ export const router = createBrowserRouter([
             {
                 path: 'project/:id',
                 Component:ProjectDetails
-            }
+            },
+          
         ]
-    }
+    },
+      {
+                path: 'message',
+                Component:ContactMessagesDashboard
+            }
 ])
